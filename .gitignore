@@ -1,6 +1,8 @@
-node_modules/**/*
-.expo/*
+node_modules
 npm-debug.*
+
+# Expo
+.expo/*
 *.jks
 *.p8
 *.p12
@@ -12,3 +14,17 @@ web-report/
 
 # macOS
 .DS_Store
+
+# ReasonML
+.bsb.lock
+.merlin
+**/lib/bs
+**/lib/ocaml
+
+.now
+**/yarn-error.log
+
+.env
+.graphql_ppx_cache
+graphql_schema.json
+

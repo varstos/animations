@@ -1,0 +1,1 @@
+export {make as BlylButton} from "./components/BlylButton.gen";

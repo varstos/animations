@@ -1,0 +1,1 @@
+export {default as PanGesture} from "./components/Step2";

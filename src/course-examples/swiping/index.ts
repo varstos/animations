@@ -1,0 +1,1 @@
+export { default, profiles } from "./components/Swipe";

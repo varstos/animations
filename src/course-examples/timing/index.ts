@@ -1,0 +1,1 @@
+export {default as Timing} from "./components/Timing";

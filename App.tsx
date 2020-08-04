@@ -1,7 +1,7 @@
-import React from "react";
-import { View } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import { View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import {
   ClocksValueAndIdentities,
   Transitions,
@@ -11,29 +11,29 @@ import {
   Spring,
   DynamicSprings,
   Timing,
-} from "./src/course-examples";
-import { UseTransition } from "./src/course-examples/useTransition";
-import { BlylScreen, BlylContentView, BlylButton } from "./src/universal-ui";
-import Swipe from "./src/course-examples/swiping";
+} from './src/course-examples';
+import { UseTransition } from './src/course-examples/useTransition';
+import { BlylScreen, BlylContentView, BlylButton } from './src/universal-ui';
+import Swipe from './src/course-examples/swiping';
 import {
   InstagramPinch,
   PinchWithPanAndSpring,
   PinchWithPan,
-} from "./src/course-examples/pinchGestures";
+} from './src/course-examples/pinchGestures';
 
 function HomeScreen({ navigation }) {
   const screenNames = [
-    { name: "ClockValues" },
-    { name: "Transitions" },
-    { name: "UseTransitions" },
-    { name: "Timing" },
-    { name: "PanGesture" },
-    { name: "Decay" },
-    { name: "Spring" },
-    { name: "Swipe" },
-    { name: "DynamicSprings" },
-    { name: "DragToSort" },
-    { name: "PinchGestures" },
+    // { name: "ClockValues" },
+    { name: 'Transitions' },
+    { name: 'UseTransitions' },
+    { name: 'Timing' },
+    { name: 'PanGesture' },
+    { name: 'Decay' },
+    { name: 'Spring' },
+    { name: 'Swipe' },
+    { name: 'DynamicSprings' },
+    { name: 'DragToSort' },
+    { name: 'PinchGestures' },
   ];
 
   return (
@@ -44,7 +44,7 @@ function HomeScreen({ navigation }) {
             <BlylButton
               key={index.toString()}
               title={name}
-              kind={index % 2 == 0 ? "primary" : "secondary"}
+              kind={index % 2 == 0 ? 'primary' : 'secondary'}
               onPress={() => navigation.navigate(name)}
               buttonStyle={{ marginBottom: 16 }}
             />
@@ -101,9 +101,9 @@ function TimingScreen() {
 
 function PinchGesturesScreen({ navigation }) {
   const pinchNames = [
-    { name: "InstagramPinch" },
-    { name: "PinchWithPan" },
-    { name: "PinchWithPanAndSpring" },
+    { name: 'InstagramPinch' },
+    { name: 'PinchWithPan' },
+    { name: 'PinchWithPanAndSpring' },
   ];
   return (
     <BlylScreen>
@@ -112,7 +112,7 @@ function PinchGesturesScreen({ navigation }) {
           <BlylButton
             key={index.toString()}
             title={name}
-            kind={index % 2 == 0 ? "primary" : "secondary"}
+            kind={index % 2 == 0 ? 'primary' : 'secondary'}
             onPress={() => navigation.navigate(name)}
             buttonStyle={{ marginBottom: 16 }}
           />

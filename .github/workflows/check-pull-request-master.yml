@@ -1,0 +1,90 @@
+name: "Check pull request"
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    paths-ignore:
+      - "**.md" # Any markdown file
+      
+jobs:
+  code_check:
+    name: "Code Check"
+    runs-on: ubuntu-latest
+
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run : |
+          npm install
+  # api_tests:
+  #   name: "API tests"
+  #   runs-on: ubuntu-latest
+
+  #   # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+  #   defaults:
+  #     run:
+  #       shell: bash
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+
+      # - name: Run backend API tests in "ivan" environment
+      #   if: ${{ github.actor == 'bojovicivan' }}
+      #   run: |
+      #     npm install
+      #     npm run cy:run
+      #   working-directory: ./dev-api-test-suite
+      #   env:
+      #     CYPRESS_DECIDR_TEST_USER_EMAIL: ${{ secrets.CYPRESS_DECIDR_TEST_USER_EMAIL_IVAN }}
+      #     CYPRESS_DECIDR_TEST_USER_PASSWORD: ${{ secrets.CYPRESS_DECIDR_TEST_USER_PASSWORD_IVAN }}
+      #     CYPRESS_AWS_REGION: ${{ secrets.CYPRESS_AWS_REGION_IVAN }}
+      #     CYPRESS_DECIDR_GRAPHQL_URL: ${{ secrets.CYPRESS_DECIDR_GRAPHQL_URL_IVAN }}
+      #     CYPRESS_DECIDR_IDENTITY_POOL_ID: ${{ secrets.CYPRESS_DECIDR_IDENTITY_POOL_ID_IVAN }}
+      #     CYPRESS_DECIDR_USER_POOL_ID: ${{ secrets.CYPRESS_DECIDR_USER_POOL_ID_IVAN }}
+      #     CYPRESS_DECIDR_USER_POOL_WEB_CLIENT_ID: ${{ secrets.CYPRESS_DECIDR_USER_POOL_WEB_CLIENT_ID_IVAN }}
+      #     CYPRESS_CR_API_KEY: ${{ secrets.CYPRESS_CR_API_KEY_IVAN }}
+      #     CYPRESS_CR_GRAPHQL_URL: ${{ secrets.CYPRESS_CR_GRAPHQL_URL_IVAN }}
+      #     CYPRESS_CR_IDENTITY_POOL_ID: ${{ secrets.CYPRESS_CR_IDENTITY_POOL_ID_IVAN }}
+      #     CYPRESS_CR_USER_POOL_ID: ${{ secrets.CYPRESS_CR_USER_POOL_ID_IVAN }}
+      #     CYPRESS_CR_USER_POOL_WEB_CLIENT_ID: ${{ secrets.CYPRESS_CR_USER_POOL_WEB_CLIENT_ID_IVAN }}
+
+      # - name: Run backend API tests in "staging" environment
+      #   # if: ${{ github.actor != 'bojovicivan' }}
+      #   run: |
+      #     npm install
+      #     npm run cy:run
+      #   working-directory: ./dev-api-test-suite
+      #   env:
+      #     CYPRESS_DECIDR_API_PROXY_URL: ${{ secrets.CYPRESS_DECIDR_API_PROXY_URL_STAGING }}
+      #     CYPRESS_DECIDR_TEST_USER_EMAIL: ${{ secrets.CYPRESS_DECIDR_TEST_USER_EMAIL_STAGING }}
+      #     CYPRESS_DECIDR_TEST_USER_PASSWORD: ${{ secrets.CYPRESS_DECIDR_TEST_USER_PASSWORD_STAGING }}
+      #     CYPRESS_AWS_REGION: ${{ secrets.CYPRESS_AWS_REGION_STAGING }}
+      #     CYPRESS_DECIDR_GRAPHQL_URL: ${{ secrets.CYPRESS_DECIDR_GRAPHQL_URL_STAGING }}
+      #     CYPRESS_DECIDR_IDENTITY_POOL_ID: ${{ secrets.CYPRESS_DECIDR_IDENTITY_POOL_ID_STAGING }}
+      #     CYPRESS_DECIDR_USER_POOL_ID: ${{ secrets.CYPRESS_DECIDR_USER_POOL_ID_STAGING }}
+      #     CYPRESS_DECIDR_USER_POOL_WEB_CLIENT_ID: ${{ secrets.CYPRESS_DECIDR_USER_POOL_WEB_CLIENT_ID_STAGING }}
+      #     CYPRESS_CR_API_KEY: ${{ secrets.CYPRESS_CR_API_KEY_DEV }}
+      #     CYPRESS_CR_GRAPHQL_URL: ${{ secrets.CYPRESS_CR_GRAPHQL_URL_DEV }}
+      #     CYPRESS_CR_IDENTITY_POOL_ID: ${{ secrets.CYPRESS_CR_IDENTITY_POOL_ID_DEV }}
+      #     CYPRESS_CR_USER_POOL_ID: ${{ secrets.CYPRESS_CR_USER_POOL_ID_DEV }}
+      #     CYPRESS_CR_USER_POOL_WEB_CLIENT_ID: ${{ secrets.CYPRESS_CR_USER_POOL_WEB_CLIENT_ID_DEV }}
+
+      # - name: Generate Cypress report for api tests
+      #   if: always()
+      #   run: |
+      #     npm run cy:test:make:report
+      #   working-directory: ./dev-api-test-suite
+
+      # - name: Archive Cypress artifacts for api tests
+      #   uses: actions/upload-artifact@v1
+      #   if: always()
+      #   with:
+      #     name: cypress-artifacts-for-api-tests
+      #     path: dev-api-test-suite/cypress/artifacts/
